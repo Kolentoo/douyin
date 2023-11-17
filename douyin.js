@@ -4,6 +4,7 @@ const puppeteer = require('puppeteer');
   // 设置抖音直播房间号
   var room = '';
 
+
   // 帐号1
   const browser1 = await puppeteer.launch({headless: false});
   const page1 = await browser1.newPage();
@@ -27,7 +28,7 @@ const puppeteer = require('puppeteer');
 
   //判断是否直播中
 
-  //查询当前点赞数
+  //查询当前主播的点赞数
 
 
   //开始点赞-速度1秒钟10次
@@ -35,19 +36,18 @@ const puppeteer = require('puppeteer');
   let total1 = 0;
   // let target1 = await page1.$('Zs4Pv2bD');
   timeBox1 = setInterval(()=>{
-    if(total1<10){
+    if(total1<=2000){
       total1++;
-      console.log('点赞数--3453',total1)
+      //点赞数提醒
+      if(total1==100||total1==500||total1==1000||total1==1500||total1==2000){
+        console.log('点赞数--3453',total1)
+      }
       // target1[0].click();
     }else{
       console.log('3453-点赞结束');
       clearInterval(timeBox1);
     }
   },100)
-
-  //输出最终点赞数
-
-
 
   //结束点赞-退出窗口
   browser1.close();
